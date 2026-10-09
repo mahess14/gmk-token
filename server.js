@@ -5,7 +5,12 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
-app.use(cors({ origin: process.env.FRONTEND_ORIGIN || "http://localhost:5173" }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:5174"
+  ]
+}));
 app.use(express.json());
 
 const { MONGODB_URI, APP_PASSWORD, PORT = 5000 } = process.env;
